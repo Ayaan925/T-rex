@@ -8,6 +8,7 @@ var score;
 var PLAY = 1;
 var END = 0;
 var gameState = PLAY;
+var die, point, jump;
 
 
 
@@ -16,6 +17,9 @@ function preload(){
   trex_collided = loadImage("trex_collided.png");
   
   groundImage = loadImage("ground2.png");
+  die = loadSound("die.mp3");
+  point = loadSound("checkPoint.mp3");
+  jump = loadSound("jump.mp3");
   
   cloudImage = loadImage("cloud.png");
   
@@ -69,7 +73,7 @@ function draw() {
      //jump when the space key is pressed
     if(keyDown("space") && trex.y >= 160){
       trex.velocityY = -12 ;
-     // playSound("jump.mp3");
+     playSound("jump.mp3");
     }
   console.log(trex.y);
     //add gravity
@@ -83,9 +87,9 @@ function draw() {
     
     //End the game when trex is touching the obstacle
     if(obstaclesGroup.isTouching(trex)){
-      //playSound("jump.mp3");
+      playSound("jump.mp3");
       gameState = END;
-      //playSound("die.mp3");
+      playSound("die.mp3");
     }
   }
   

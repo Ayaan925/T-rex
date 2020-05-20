@@ -63,7 +63,7 @@ function draw() {
   text("Score: "+ score, 500,50);
   
     if (score>0 && score%100 === 0){
-      playSound("checkPoint.mp3");
+      point.play();
     }
     
     if (ground.x < 0){
@@ -73,7 +73,7 @@ function draw() {
      //jump when the space key is pressed
     if(keyDown("space") && trex.y >= 160){
       trex.velocityY = -12 ;
-     playSound("jump.mp3");
+      jump.play();
     }
   console.log(trex.y);
     //add gravity
@@ -87,9 +87,9 @@ function draw() {
     
     //End the game when trex is touching the obstacle
     if(obstaclesGroup.isTouching(trex)){
-      playSound("jump.mp3");
+   jump.play();
       gameState = END;
-      playSound("die.mp3");
+      die.play();
     }
   }
   
